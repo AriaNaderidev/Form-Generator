@@ -1,7 +1,7 @@
 echo "--- Running pre-push checks ---"
 
 echo "Running tests..."
-npx vitest run --passWithNoTests
+npx vitest run --passWithNoTests || { echo "❌ Build failed! Push aborted."; exit 1; }
 
 echo "Running build..."
 npm run build || { echo "❌ Build failed! Push aborted."; exit 1; }
